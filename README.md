@@ -1,7 +1,7 @@
 ___
-# DELETE THIS INSTRUCTIONS AND ADD A SHORT INTRODUCTION ABOUT YOUR PROJECT
+# Accelerometer-Based Fan Health Monitoring and Anomaly Detection System
 ___
 
-## Please refer the instructions in below URL:
+## Introduction
 
-https://projects.ce.pdn.ac.lk/docs/how-to-add-a-project
+A real-time monitoring system that uses accelerometer sensor data to analyze vibration patterns of rotating fans and detect anomalies such as imbalance, misalignment, or bearing faults using signal processing and machine learning techniques.
