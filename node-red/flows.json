@@ -1,0 +1,451 @@
+[
+    {
+        "id": "480eabb870c38958",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5e7b727c148b44d6",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e752a65c92d6b280",
+        "type": "ui_tab",
+        "name": "Fan Monitoring",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "25873b51a3fae798",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "9ef6723d975cbcd6",
+        "type": "ui_group",
+        "name": "Vibration Chart",
+        "tab": "e752a65c92d6b280",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b5c5186ca4f90f70",
+        "type": "ui_group",
+        "name": "Vibration Gauge",
+        "tab": "e752a65c92d6b280",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6e9ea93255d69f23",
+        "type": "ui_group",
+        "name": "Fan Status",
+        "tab": "e752a65c92d6b280",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "324efa5360338802",
+        "type": "mqtt in",
+        "z": "480eabb870c38958",
+        "name": "",
+        "topic": "sensors/group-02/fan-monitor/data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5e7b727c148b44d6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "413d531eb7581c61"
+            ]
+        ]
+    },
+    {
+        "id": "413d531eb7581c61",
+        "type": "function",
+        "z": "480eabb870c38958",
+        "name": "function 1",
+        "func": "msg.payload = msg.payload.magnitude;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 240,
+        "wires": [
+            [
+                "aa57c3e247c1d5fa",
+                "440ff2f5e01db387"
+            ]
+        ]
+    },
+    {
+        "id": "aa57c3e247c1d5fa",
+        "type": "ui_chart",
+        "z": "480eabb870c38958",
+        "name": "vibration_chart",
+        "group": "9ef6723d975cbcd6",
+        "order": 0,
+        "width": "6",
+        "height": "6",
+        "label": "Vibration Over Time",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "time",
+        "interpolate": "linear",
+        "nodata": "Waiting for data...",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "3",
+        "removeOlder": 1,
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 820,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "440ff2f5e01db387",
+        "type": "ui_gauge",
+        "z": "480eabb870c38958",
+        "name": "vibration_level",
+        "group": "b5c5186ca4f90f70",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "gtype": "gage",
+        "title": "Vibration Level",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "3",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1",
+        "seg2": "2",
+        "diff": false,
+        "className": "",
+        "x": 820,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "701ed49971af8dbf",
+        "type": "mqtt in",
+        "z": "480eabb870c38958",
+        "name": "",
+        "topic": "alerts/group-02/fan-monitor/status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5e7b727c148b44d6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "5673b54370dc532b"
+            ]
+        ]
+    },
+    {
+        "id": "5673b54370dc532b",
+        "type": "function",
+        "z": "480eabb870c38958",
+        "name": "function 2",
+        "func": "\nmsg.payload = msg.payload.status\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 560,
+        "wires": [
+            [
+                "5418a7e05eee8486"
+            ]
+        ]
+    },
+    {
+        "id": "5418a7e05eee8486",
+        "type": "switch",
+        "z": "480eabb870c38958",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ANOMALY",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "NORMAL",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 750,
+        "y": 560,
+        "wires": [
+            [
+                "d6e8ddf6843af086"
+            ],
+            [
+                "19754f7767cf6c49"
+            ]
+        ]
+    },
+    {
+        "id": "bff6283d0b3f506e",
+        "type": "ui_template",
+        "z": "480eabb870c38958",
+        "group": "6e9ea93255d69f23",
+        "name": "alert",
+        "order": 0,
+        "width": "6",
+        "height": "6",
+        "format": "<div id=\"statusBox\" style=\"\n    font-size:28px;\n    font-weight:bold;\n    border-radius:12px;\n    text-align:center;\n    border:2px solid {{msg.color}};\n    background:{{msg.bg}};\n    color:{{msg.color}};\n    transition: all 0.3s ease;\n\n    height:180px;\n\n    display:flex;\n    align-items:center;\n    justify-content:center;\n\n     \">\n    {{msg.payload}}\n</div>\n\n<script>\n    (function(scope) {\n\n    let blink = null;\n\n    scope.$watch('msg', function(msg) {\n\n        if (!msg) return;\n\n        const box = document.getElementById(\"statusBox\");\n\n        // stop previous blinking\n        if (blink) {\n            clearInterval(blink);\n            blink = null;\n        }\n\n        // ANOMALY → flashing\n        if (msg.flash === true) {\n\n            let visible = true;\n\n            blink = setInterval(function () {\n                if (!box) return;\n\n                box.style.visibility = visible ? \"hidden\" : \"visible\";\n                visible = !visible;\n            }, 500);\n\n        } else {\n            // NORMAL → always visible\n            if (box) box.style.visibility = \"visible\";\n        }\n    });\n\n})(scope);\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1250,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6e8ddf6843af086",
+        "type": "function",
+        "z": "480eabb870c38958",
+        "name": "anomaly detected",
+        "func": "msg.payload = \"Abnormal Vibrations Detected!\";\nmsg.color = \"red\";\nmsg.flash = true;\nmsg.bg = \"rgba(255,0,0,0.15)\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 480,
+        "wires": [
+            [
+                "bff6283d0b3f506e"
+            ]
+        ]
+    },
+    {
+        "id": "19754f7767cf6c49",
+        "type": "function",
+        "z": "480eabb870c38958",
+        "name": "no anomaly detected",
+        "func": "msg.payload = \"Fan Operating Normally\";\nmsg.color = \"green\";\nmsg.flash = false;\nmsg.bg = \"rgba(0,255,0,0.08)\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 620,
+        "wires": [
+            [
+                "bff6283d0b3f506e"
+            ]
+        ]
+    },
+    {
+        "id": "677b10e0bf688bdd",
+        "type": "inject",
+        "z": "480eabb870c38958",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "\"{\"status\":\"ANOMALY\"}\"",
+        "payloadType": "str",
+        "x": 190,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    }
+]
